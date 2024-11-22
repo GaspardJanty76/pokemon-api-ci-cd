@@ -34,9 +34,4 @@ jobs:
           npm run build
         continue-on-error: false
 
-      - name: Preview the build
-        run: |
-          npm run preview
-        continue-on-error: false
-
       - run: echo "🍏 The job's status is ${{ job.status }}."
