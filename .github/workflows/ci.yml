@@ -1,43 +1,43 @@
 name: Pokémon CI
 
-on: [push]
+
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  Explore-GitHub-Actions:
+  build:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Set up Node.js with caching
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '17'
           cache: 'npm'
 
       - name: Install dependencies
-        run: |
-          npm install
+        run: npm install
 
-      - name: TypeScript check
-        run: |
-          npx tsc --noEmit
-        continue-on-error: false
-
-      - name: Check formatting with Prettier
-        run: |
-          npm run format:check
-        continue-on-error: false
+      - name: Run Prettier check
+        run: npm run format:check
 
       - name: Run ESLint
-        run: |
-          npm run lint
-        continue-on-error: false
+        run: npm run lint
+
+      - name: Run TypeScript check
+        run: npm run tsc --noEmit
 
       - name: Build the project
-        run: |
-          npm run build
-        continue-on-error: false
+        run: npm run build
 
-      - run: echo "🍏 The job's status is ${{ job.status }}."
+      - name: Run Preview (optional)
+        run: npm run preview
+        continue-on-error: true
+
+      - run: echo "🍏 The pipeline ran successfully"
