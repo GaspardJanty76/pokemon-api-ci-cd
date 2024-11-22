@@ -16,7 +16,7 @@ function App() {
   
   //test de la pipeline
 
-  const message = "Hello, World!";
+  const message = "Hello, World!"
   //let message = "Hello, World!";
   console.log(message);
 
