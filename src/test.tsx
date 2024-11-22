@@ -1,1 +1,1 @@
-const num: string = 42;
+import { NonExistentComponent } from './NonExistentComponent';
