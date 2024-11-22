@@ -17,7 +17,6 @@ jobs:
 
       - name: Add server to known_hosts
         run: |
-          mkdir -p ~/.ssh
           ssh-keyscan -H 51.178.29.201 >> ~/.ssh/known_hosts
 
       # - name: Set up Node.js
@@ -49,9 +48,9 @@ jobs:
       #   run: |
       #     npm run build
       #   continue-on-error: false
-      
-      - name: List files on remote server via SSH
-        run: |
-          ssh -o StrictHostKeyChecking=no debian@51.178.29.201 "ls"
+
+      - name: Ls on server
+        run: ssh debian@51.178.29.201 'ls -la /var/www'
+    
 
       - run: echo "🍏 The job's status is ${{ job.status }}."
