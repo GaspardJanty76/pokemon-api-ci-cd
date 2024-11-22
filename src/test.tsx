@@ -1,2 +1,2 @@
-const hello = 'Hello, world'
-console.log(hello)
+let message = 'Hello, world'
+console.log(message)
