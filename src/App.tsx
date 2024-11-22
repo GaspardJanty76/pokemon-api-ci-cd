@@ -13,7 +13,12 @@ interface Card {
 function App() {
   const [query, setQuery] = useState('');
   const [cards, setCards] = useState<Card[]>([]);
+  
+  //test de la pipeline
 
+  const message = "Hello, World!";
+  //let message = "Hello, World!";
+  console.log(message);
 
   async function search(e: FormEvent) {
     e.preventDefault();
